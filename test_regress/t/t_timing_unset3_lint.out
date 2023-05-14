@@ -1,6 +1,14 @@
-%Error-NEEDTIMINGOPT: t/t_clocking_notiming.v:11:8: Use --timing or --no-timing to specify how clocking output skew greater than #0 should be handled
-                                                  : ... In instance t
+%Warning-UNDRIVEN: t/t_clocking_notiming.v:8:10: Signal is not driven: 'clk'
+                                               : ... In instance t
+    8 |    logic clk;
+      |          ^~~
+                   ... For warning description see https://verilator.org/warn/UNDRIVEN?v=latest
+                   ... Use "/* verilator lint_off UNDRIVEN */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: t/t_clocking_notiming.v:9:10: Signal is not used: 'out'
+                                                   : ... In instance t
+    9 |    logic out;
+      |          ^~~
+%Warning-UNUSEDSIGNAL: t/t_clocking_notiming.v:11:8: Signal is not driven, nor used: 'out'
+                                                   : ... In instance t
    11 |        output #1 out;
       |        ^~~~~~
-                      ... For error description see https://verilator.org/warn/NEEDTIMINGOPT?v=latest
-%Error: Exiting due to
