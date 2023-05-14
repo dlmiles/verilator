@@ -882,6 +882,10 @@ void V3Options::notify() {
         m_dumpLevel["tree"] = m_dumpLevel["tree-dot"];
     }
 
+    // When lintOnly() implicitly enable timing by default, so we do not error when timing statements
+    //  are present without specifying how to handle timing via the options --no-timing|--timing
+    if (lintOnly() && timing().isDefault()) m_timing = VOptionBool::OPT_TRUE;
+
     // Preprocessor defines based on options used
     if (timing().isSetTrue()) V3PreShell::defineCmdLine("VERILATOR_TIMING", "1");
 }
